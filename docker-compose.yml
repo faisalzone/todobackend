@@ -11,6 +11,7 @@ services:
       dockerfile: Dockerfile
       target: test
   release:
+    image: 600163339681.dkr.ecr.ap-southeast-2.amazonaws.com/docker-in-aws-fa/todobackend:latest
     build:
       context: .
       dockerfile: Dockerfile
@@ -20,6 +21,7 @@ services:
       MYSQL_USER: todo
       MYSQL_PASSWORD: password
   app:
+    image: 600163339681.dkr.ecr.ap-southeast-2.amazonaws.com/docker-in-aws-fa/todobackend:${APP_VERSION}
     extends:
       service: release
     depends_on:
