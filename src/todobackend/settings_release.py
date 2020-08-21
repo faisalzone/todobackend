@@ -13,15 +13,15 @@ ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
 # Database settings
 DATABASES = {
     'default': {
-        'ENGINE': 'mysql.connector.django',
-        'NAME': os.environ.get('MYSQL_DATABASE','todobackend'),
-        'USER': os.environ.get('MYSQL_USER','todo'),
-        'PASSWORD': os.environ.get('MYSQL_PASSWORD','password'),
-        'HOST': os.environ.get('MYSQL_HOST','localhost'),
-        'PORT': os.environ.get('MYSQL_PORT','3306'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DATABASE', 'todobackend'),
+        'USER': os.environ.get('POSTGRES_USER', 'todo'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'password'),
+        'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
+        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
     },
     'OPTIONS': {
-      'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
     }
 }
 
