@@ -4,7 +4,7 @@ import os
 # Installed Apps
 INSTALLED_APPS += ('django_nose', )
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-TEST_OUTPUT_DIR = os.environ.get('TEST_OUTPUT_DIR','.')
+TEST_OUTPUT_DIR = os.environ.get('TEST_OUTPUT_DIR', '.')
 NOSE_ARGS = [
   '--verbosity=2',                  # verbose output
   '--nologcapture',                 # don't output log capture
