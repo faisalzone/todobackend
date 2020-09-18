@@ -17,9 +17,9 @@ services:
       dockerfile: Dockerfile
     environment:
       DJANGO_SETTINGS_MODULE: todobackend.settings_release
-      MYSQL_HOST: db
-      MYSQL_USER: todo
-      MYSQL_PASSWORD: password
+      POSTGRES_HOST: db
+      POSTGRES_USER: todo
+      POSTGRES_PASSWORD: password
   app:
     image: 600163339681.dkr.ecr.ap-southeast-2.amazonaws.com/docker-in-aws-fa/todobackend:${APP_VERSION}
     extends:
@@ -74,7 +74,7 @@ services:
       interval: 3s
       retries: 10
     environment:
-      MYSQL_DATABASE: todobackend
-      MYSQL_USER: todo
-      MYSQL_PASSWORD: password
-      MYSQL_ROOT_PASSWORD: password
+      POSTGRES_DATABASE: todobackend
+      POSTGRES_USER: todo
+      POSTGRES_PASSWORD: password
+      POSTGRES_ROOT_PASSWORD: password
