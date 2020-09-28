@@ -17,9 +17,9 @@ services:
       dockerfile: Dockerfile
     environment:
       DJANGO_SETTINGS_MODULE: todobackend.settings_release
-      POSTGRES_HOST: db
-      POSTGRES_USER: todo
-      POSTGRES_PASSWORD: password
+      MYSQL_HOST: db
+      MYSQL_USER: todo
+      MYSQL_PASSWORD: password
   app:
     image: 600163339681.dkr.ecr.ap-southeast-2.amazonaws.com/docker-in-aws-fa/todobackend:${APP_VERSION}
     extends:
@@ -67,14 +67,13 @@ services:
       - migrate
       - --no-input
   db:
-    image: postgres:11
+    image: mysql:5.7
     healthcheck:
-      # test: mysqlshow -u $$MYSQL_USER -p$$MYSQL_PASSWORD
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: mysqlshow -u $$MYSQL_USER -p$$MYSQL_PASSWORD
       interval: 3s
       retries: 10
     environment:
-      POSTGRES_DATABASE: todobackend
-      POSTGRES_USER: todo
-      POSTGRES_PASSWORD: password
-      POSTGRES_ROOT_PASSWORD: password
+      MYSQL_DATABASE: todobackend
+      MYSQL_USER: todo
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
